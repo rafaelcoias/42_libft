@@ -10,17 +10,99 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = ./ft_isalpha.c ./ft_isdigit.c ./ft_strcmp.c ./ft_isascii.c ./ft_isalnum.c ./ft_isprint.c ./ft_atoi.c ./ft_memcpy.c ./ft_bzero.c ./ft_strlen.c ./ft_memset.c ./ft_strchr.c ./ft_strlcat.c ./ft_strlcpy.c ./ft_tolower.c ./ft_toupper.c ./ft_strncmp.c ./ft_strnstr.c ./ft_strrchr.c ./ft_memcmp.c ./ft_memchr.c ./ft_memmove.c ./ft_calloc.c ./ft_strdup.c ./ft_substr.c ./ft_strjoin.c ./ft_strtrim.c ./ft_split.c ./ft_itoa.c ./ft_strmapi.c ./ft_striteri.c ./ft_putchar_fd.c ./ft_putstr_fd.c ./ft_putendl_fd.c ./ft_putnbr_fd.c ./ft_atol.c ./ft_lstnew.c ./ft_lstadd_front.c  ./ft_lstadd_front.c ./ft_lstsize.c ./ft_lstlast.c ./ft_lstadd_back.c ./ft_lstdelone.c ./ft_lstclear.c ./ft_lstiter.c ./ft_lstmap.c
-
-OBJ = ${SRC:.c=.o}
+########## 		   NAMES 		##########
 
 NAME = libft.a
 
-HEAD = includes
+########## 		  SOURCES 		##########
 
-GCC = gcc
+LIBFT_PATH = ./library/
+
+PRINT_F_PATH = ./ft_printf/
+
+GNL_PATH = ./get_next_line/
+
+SRC = 	$(LIBFT_PATH)ft_isalpha.c	\
+		$(LIBFT_PATH)ft_isdigit.c	\
+		$(LIBFT_PATH)ft_strcmp.c	\
+		$(LIBFT_PATH)ft_isascii.c	\
+		$(LIBFT_PATH)ft_isalnum.c	\
+		$(LIBFT_PATH)ft_isprint.c	\
+		$(LIBFT_PATH)ft_atoi.c 		\
+		$(LIBFT_PATH)ft_memcpy.c 	\
+		$(LIBFT_PATH)ft_bzero.c 	\
+		$(LIBFT_PATH)ft_strlen.c 	\
+		$(LIBFT_PATH)ft_memset.c 	\
+		$(LIBFT_PATH)ft_strchr.c 	\
+		$(LIBFT_PATH)ft_strlcat.c 	\
+		$(LIBFT_PATH)ft_strcpy.c	\
+		$(LIBFT_PATH)ft_strlcpy.c 	\
+		$(LIBFT_PATH)ft_tolower.c 	\
+		$(LIBFT_PATH)ft_toupper.c 	\
+		$(LIBFT_PATH)ft_strncmp.c 	\
+		$(LIBFT_PATH)ft_strnstr.c 	\
+		$(LIBFT_PATH)ft_strrchr.c 	\
+		$(LIBFT_PATH)ft_memcmp.c 	\
+		$(LIBFT_PATH)ft_memchr.c 	\
+		$(LIBFT_PATH)ft_memmove.c 	\
+		$(LIBFT_PATH)ft_calloc.c 	\
+		$(LIBFT_PATH)ft_strdup.c 	\
+		$(LIBFT_PATH)ft_substr.c 	\
+		$(LIBFT_PATH)ft_strjoin.c 	\
+		$(LIBFT_PATH)ft_strtrim.c 	\
+		$(LIBFT_PATH)ft_split.c 	\
+		$(LIBFT_PATH)ft_itoa.c 		\
+		$(LIBFT_PATH)ft_strmapi.c 	\
+		$(LIBFT_PATH)ft_striteri.c 	\
+		$(LIBFT_PATH)ft_putchar_fd.c	\
+		$(LIBFT_PATH)ft_putstr_fd.c 	\
+		$(LIBFT_PATH)ft_putendl_fd.c	\
+		$(LIBFT_PATH)ft_putnbr_fd.c		\
+		$(LIBFT_PATH)ft_atol.c 			\
+		$(LIBFT_PATH)ft_lstnew.c 		\
+		$(LIBFT_PATH)ft_lstadd_front.c	\
+		$(LIBFT_PATH)ft_lstadd_front.c 	\
+		$(LIBFT_PATH)ft_lstsize.c 		\
+		$(LIBFT_PATH)ft_lstlast.c 		\
+		$(LIBFT_PATH)ft_lstadd_back.c	\
+		$(LIBFT_PATH)ft_lstdelone.c 	\
+		$(LIBFT_PATH)ft_lstclear.c 		\
+		$(LIBFT_PATH)ft_lstiter.c 		\
+		$(LIBFT_PATH)ft_lstmap.c		\
+		$(GNL_PATH)/get_next_line.c			\
+		$(GNL_PATH)/get_next_line_utils.c	\
+		$(PRINT_F_PATH)/ft_printf.c			\
+		$(PRINT_F_PATH)/ft_putchar.c		\
+		$(PRINT_F_PATH)/ft_putstr.c			\
+		$(PRINT_F_PATH)/ft_putnbr.c			\
+		$(PRINT_F_PATH)/ft_puthexa.c		\
+		$(PRINT_F_PATH)/ft_putvoid.c		\
+
+########## 		  INCLUDES 		##########
+
+HEAD = ./
+
+########## 		COMPILATION 	##########
+
+OBJ = ${SRC:.c=.o}
+
+CC = gcc
+
+.c.o:
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${HEAD}
+
+########## 		   FLAGS 		##########
 
 CFLAGS = -Wall -Wextra -Werror
+
+########## 		   COLORS 		##########
+
+GREEN		=	\033[0;32m
+YELLOW		=	\033[0;33m
+RED			=	\033[0;31m
+RESET       =   \033[0m
+
+########## 		  COMMANDS		##########
 
 RM = rm -f
 
@@ -28,25 +110,40 @@ AR = ar rc
 
 RANLIB = ranlib
 
-.c.o:
-	${GCC} ${CFLAGS} -c $< -o ${<:.c=.o} -I ${HEAD}
+########## 		  MESSAGES 		##########
+
+NORM_LIBFT_MSG = @echo "\n<========== $(YELLOW)Norm $(NAME)$(RESET) ==========>\n"
+
+CREATE_LIBFT_MSG = @echo "\n<========== $(GREEN)$(NAME) created$(RESET) ==========>\n"
+
+REMOVE_LIBFT_MSG = @echo "\n<========== $(RED)$(NAME) removed$(RESET) ==========>\n"
+
+########## 		  TARGETS 		##########
 
 ${NAME}: ${OBJ}
 	${AR} ${NAME} ${OBJ}
 	${RANLIB} ${NAME}
 
+########## 		   RULES 		##########
+
 all: ${NAME}
+	${CREATE_LIBFT_MSG}
 
 clean: 
 	${RM} ${OBJ}
 
 fclean: clean
 	${RM} ${NAME}
+	${REMOVE_LIBFT_MSG}
 
 re:	fclean all
 
-norm:	
-	norminette -R CheckForbiddenSourceHeader *.c
-	norminette -R CheckDefine *.h
+norm:
+	${NORM_LIBFT_MSG}
+	@cd ${LIBFT_PATH} && norminette -R CheckForbiddenSourceHeader *.c && norminette -R CheckDefine *.h
+	@echo "\n"
+	@cd ${PRINT_F_PATH} && norminette -R CheckForbiddenSourceHeader *.c && norminette -R CheckDefine *.h
+	@echo "\n"
+	@cd ${GNL_PATH} && norminette -R CheckForbiddenSourceHeader *.c && norminette -R CheckDefine *.h
 
 .PHONY: all clean fclean re norm

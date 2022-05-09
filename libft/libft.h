@@ -13,18 +13,35 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+/* INCLUDES */
+
+# include "./ft_printf/ft_printf.h"
+# include "./get_next_line/get_next_line.h"
 # include <stdbool.h>
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
+# include <fcntl.h>
 # include <stdio.h>
 # include <ctype.h>
+
+/* COLORS */
+
+# define RED	"\033[0;31m"
+# define YELLOW	"\033[0;33m"
+# define GREEN	"\033[1;32m"
+# define RESET	"\033[0m"
+
+/* STRUCTS */
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+/* LIBFT */
 
 size_t		ft_strlen(const char *s);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);
@@ -47,6 +64,7 @@ char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_itoa(int n);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char		*ft_strcpy(char *dest, char *src);
 
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 void		ft_bzero(void *s, size_t n);
@@ -87,5 +105,24 @@ int			ft_lstsize(t_list *lst);
 int			ft_lstsize(t_list *lst);
 
 long long	ft_atol(const char *str);
+
+/* GET_NEXT_LINE */
+
+char		*get_next_line(int fd);
+char		*ft_find_nl(char *str);
+char		*ft_strcat(char *dest, char *src);
+char		*ft_new_save(char *str);
+int			ft_count_nl(char *str);
+
+/* FT_PRINT_F */
+
+int			ft_printf(const char *str, ...);
+int			ft_check_flag(va_list list, char c);
+int			ft_putchar(char c);
+int			ft_putstr(char *str);
+int			ft_putnbr(int n);
+int			ft_put_unsigned_nbr(unsigned int n);
+int			ft_putvoid(unsigned long n, char *base, int start);
+int			ft_puthexa(unsigned int n, char *base);
 
 #endif
