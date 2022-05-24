@@ -13,6 +13,6 @@ implementing and learning to use them. Your will create your own library.
 
 <details><summary>My grade</summary>
   
-  ![image](https://user-images.githubusercontent.com/91686183/169927289-9e8dcfa1-7789-4b1d-a6fb-b9d1b8f90dce.png)
+  ![image](https://user-images.githubusercontent.com/91686183/169927774-0c9bb3b1-3cb3-4f2d-8acf-6fd8275aaeaf.png)
   
 </details>
