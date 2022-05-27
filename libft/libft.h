@@ -103,6 +103,8 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_atoi(const char *str);
 int			ft_lstsize(t_list *lst);
 int			ft_lstsize(t_list *lst);
+int			ft_power_to(int nbr, int power);
+int			ft_sqrt(int nbr);
 
 long long	ft_atol(const char *str);
 

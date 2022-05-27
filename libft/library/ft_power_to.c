@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_power_to.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-
-size_t	ft_strlen(const char *str)
+int	ft_power_to(int nbr, int power)
 {
 	int	i;
 
 	i = 0;
-	while (str && str[i] != '\0')
+	if (power == 0 || nbr == 1)
+		return (1);
+	while (i != power - 1)
+	{
+		nbr = nbr * nbr;
 		i++;
-	return (i);
+	}
+	return (nbr);
 }

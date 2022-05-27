@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c	                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rade-sar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-
-size_t	ft_strlen(const char *str)
+int	ft_sqrt(int nbr)
 {
 	int	i;
 
 	i = 0;
-	while (str && str[i] != '\0')
+	if (nbr == 0)
+		return (0);
+	if (nbr == 1)
+		return (1);
+	while (i * i < nbr)
 		i++;
-	return (i);
+	if (i * i == nbr)
+		return (i);
+	return (-1);
 }
